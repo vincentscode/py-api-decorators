@@ -10,6 +10,9 @@ class JsonObject(object):
     def __init__(self, json_data):
         self.json_data = json_data
 
+    def populate_fields(self):
+        pass
+
     @classmethod
     def from_string(cls, json_string: str):
         return cls(json.loads(json_string))
@@ -46,6 +49,12 @@ class JsonProperty(object):
             return_value = (self.return_type)(return_value)
 
         return return_value
+
+    def __set__(self, *args):
+        raise TypeError("JsonPropertys cannot be assigned manually.")
+
+    def __delete__(self, *args):
+        raise TypeError("JsonPropertys cannot be deleted manually.")
 
     def __str__(self):
         return f"<JsonProperty | mapping: {self.mapping}>"

@@ -1,4 +1,5 @@
 from py_api_decorators.json import JsonProperty, JsonObject
+from py_api_decorators.api import BaseApiObject
 
 
 class TestApiClass(JsonObject):
